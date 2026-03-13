@@ -608,7 +608,7 @@ Resultados da Sincronização',
     'use_cloned_image' => 'Clonar imagem do original',
     'use_cloned_image_help' => 'Você pode clonar a imagem original ou fazer o upload de uma nova usando o campo de envio abaixo.',
     'use_cloned_no_image_help' => 'Este item não tem uma imagem associada e, em vez disso, herda do modelo ou categoria a que pertence. Se você gostaria de usar uma imagem específica para este item, você pode fazer o upload de uma nova abaixo.',
-    'footer_credit' => '<a target="_blank" href="https://snipeitapp.com" rel="noopener">Snipe-IT</a> é um software de código aberto, feito com <i class="fa fa-heart" aria-hidden="true" style="color: #a94442; font-size: 10px" /></i><span class="sr-only">ama</span> por <a href="https://bsky.app/profile/snipeitapp.com" rel="noopener">@snipeitapp.com</a>.',
+    'footer_credit' => '',
     'set_password' => 'Definir uma senha',
 
 // Add form placeholders here

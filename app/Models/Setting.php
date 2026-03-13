@@ -75,6 +75,9 @@ class Setting extends Model
         'label2_asset_logo' => 'boolean',
         'require_checkinout_notes' => 'boolean',
         'manager_view_enabled' => 'boolean',
+        // footer settings stored as 'on'/'off' but easily interpreted as bool
+        'support_footer' => 'boolean',
+        'version_footer' => 'boolean',
     ];
 
     /**
@@ -195,6 +198,35 @@ class Setting extends Model
         $custom_css = str_replace('&quot;', '"', $custom_css);
 
         return $custom_css;
+    }
+
+    /**
+     * Accessor to convert stored 'on'/'off' string into bool.
+     */
+    public function getSupportFooterAttribute($value)
+    {
+        if (is_bool($value)) {
+            return $value;
+        }
+        return ($value === 'on' || $value === 1 || $value === '1');
+    }
+
+    public function setSupportFooterAttribute($value)
+    {
+        $this->attributes['support_footer'] = $value ? 'on' : 'off';
+    }
+
+    public function getVersionFooterAttribute($value)
+    {
+        if (is_bool($value)) {
+            return $value;
+        }
+        return ($value === 'on' || $value === 1 || $value === '1');
+    }
+
+    public function setVersionFooterAttribute($value)
+    {
+        $this->attributes['version_footer'] = $value ? 'on' : 'off';
     }
 
     /**

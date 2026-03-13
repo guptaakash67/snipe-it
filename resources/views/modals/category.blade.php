@@ -15,6 +15,5 @@
                 <input type="hidden" name='category_type' id="modal-category_type" value="{{ request('category_type') }}" />
             </form>
         </div>
-       @include('modals.partials.footer')
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->

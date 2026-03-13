@@ -15,7 +15,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-        restart: true
     env_file:
       - .env
 
@@ -35,3 +34,17 @@ services:
       interval: 5s
       timeout: 1s
       retries: 5
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: ${DB_USERNAME}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy

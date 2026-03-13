@@ -400,14 +400,16 @@ class SettingsController extends Controller
 
         $setting->brand = $request->input('brand', '1');
         $setting->header_color = $request->input('header_color');
-        $setting->support_footer = $request->input('support_footer');
-        $setting->version_footer = $request->input('version_footer');
-        $setting->footer_text = $request->input('footer_text');
         $setting->skin = $request->input('skin');
         $setting->allow_user_skin = $request->input('allow_user_skin', '0');
         $setting->show_url_in_emails = $request->input('show_url_in_emails', '0');
         $setting->logo_print_assets = $request->input('logo_print_assets', '0');
         $setting->load_remote = $request->input('load_remote', 0);
+
+        // footer toggles added in 2018 migrations
+        $setting->support_footer = $request->input('support_footer', 'off') == 'on' ? 'on' : 'off';
+        $setting->version_footer = $request->input('version_footer', 'off') == 'on' ? 'on' : 'off';
+        $setting->footer_text = $request->input('footer_text');
 
         // Only allow the site name, images, and CSS to be changed if lock_passwords is false
         // Because public demos make people act like dicks

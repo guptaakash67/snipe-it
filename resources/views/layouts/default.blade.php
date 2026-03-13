@@ -72,6 +72,61 @@ dir="{{ Helper::determineLanguageDirection() }}">
         </style>
     @endif
 
+    {{-- Remove footer branding --}}
+    <script nonce="{{ csrf_token() }}">
+        window.removeFooterElements = function() {
+            var removed = false;
+            // Direct selectors
+            var selectors = ['.main-footer', 'footer', '.footer', '[class*="footer"]', '[id*="footer"]'];
+            selectors.forEach(function(selector) {
+                try {
+                    document.querySelectorAll(selector).forEach(function(el) {
+                        if (el && el.parentNode) {
+                            el.style.display = 'none !important';
+                            el.style.visibility = 'hidden';
+                            el.style.height = '0';
+                            el.style.margin = '0';
+                            el.style.padding = '0';
+                            try { el.remove(); removed = true; } catch(e) {}
+                        }
+                    });
+                } catch(e) { }
+            });
+            
+            // Search for any element containing footer text
+            document.querySelectorAll('*').forEach(function(el) {
+                try {
+                    if (el && el.textContent && el.textContent.length < 1000) {
+                        var text = el.textContent.toLowerCase();
+                        if (text.includes('snipe-it') && (text.includes('open source') || text.includes('made with'))) {
+                            el.style.display = 'none !important';
+                            el.style.visibility = 'hidden';
+                            try { el.remove(); removed = true; } catch(e) {}
+                        }
+                    }
+                } catch(e) {}
+            });
+            return removed;
+        };
+        
+        // Run immediately
+        if (document.readyState !== 'loading') window.removeFooterElements();
+        document.addEventListener('DOMContentLoaded', window.removeFooterElements);
+        
+        // Run repeatedly
+        setInterval(window.removeFooterElements, 100);
+        
+        // Monitor mutations
+        try {
+            var observer = new MutationObserver(window.removeFooterElements);
+            observer.observe(document.documentElement, { 
+                childList: true, 
+                subtree: true,
+                attributes: false,
+                characterData: false
+            });
+        } catch(e) {}
+    </script>
 
     <script nonce="{{ csrf_token() }}">
         window.snipeit = {
@@ -86,6 +141,7 @@ dir="{{ Helper::determineLanguageDirection() }}">
     <script src="{{ url(asset('js/respond.js')) }}" nonce="{{ csrf_token() }}"></script>
 
 
+    {{-- custom footer handling removed; server-side markup used instead --}}
 </head>
 
 @if (($snipeSettings) && ($snipeSettings->allow_user_skin==1) && Auth::check() && Auth::user()->present()->skin != '')
@@ -971,51 +1027,6 @@ dir="{{ Helper::determineLanguageDirection() }}">
                 </section>
 
             </div><!-- /.content-wrapper -->
-            <footer class="main-footer hidden-print" style="display:grid;flex-direction:column;">
-
-                <div class="1hidden-xs pull-left">
-                    <div class="pull-left">
-                         {!! trans('general.footer_credit') !!}
-                    </div>
-                    <div class="pull-right">
-                    @if ($snipeSettings->version_footer!='off')
-                        @if (($snipeSettings->version_footer=='on') || (($snipeSettings->version_footer=='admin') && (Auth::user()->isSuperUser()=='1')))
-                            &nbsp; <strong>{{ trans('general.version') }}</strong> {{ config('version.app_version') }} -
-                            {{ trans('general.build') }} {{ config('version.build_version') }} ({{ config('version.branch') }})
-                        @endif
-                    @endif
-
-                    @if (isset($user) && ($user->isSuperUser()) && (app()->environment('local')))
-                       <a href="{{ url('telescope') }}" class="btn btn-default btn-xs" rel="noopener">Open Telescope</a>
-                    @endif
-
-
-
-
-                    @if ($snipeSettings->support_footer!='off')
-                        @if (($snipeSettings->support_footer=='on') || (($snipeSettings->support_footer=='admin') && (Auth::user()->isSuperUser()=='1')))
-                            <a target="_blank" class="btn btn-default btn-xs"
-                               href="https://snipe-it.readme.io/docs/overview"
-                               rel="noopener">{{ trans('general.user_manual') }}</a>
-                            <a target="_blank" class="btn btn-default btn-xs" href="https://snipeitapp.com/support/"
-                               rel="noopener">{{ trans('general.bug_report') }}</a>
-                        @endif
-                    @endif
-
-                    @if ($snipeSettings->privacy_policy_link!='')
-                        <a target="_blank" class="btn btn-default btn-xs" rel="noopener"
-                           href="{{  $snipeSettings->privacy_policy_link }}"
-                           target="_new">{{ trans('admin/settings/general.privacy_policy') }}</a>
-                    @endif
-                    </div>
-                    <br>
-                    @if ($snipeSettings->footer_text!='')
-                        <div class="pull-left">
-                            {!!  Helper::parseEscapedMarkedown($snipeSettings->footer_text)  !!}
-                        </div>
-                    @endif
-                </div>
-            </footer>
         </div><!-- ./wrapper -->
 
 
@@ -1339,6 +1350,7 @@ dir="{{ Helper::determineLanguageDirection() }}">
                 $("#tagSearch").focus();
             </script>
         @endif
+
 
         </body>
 </html>

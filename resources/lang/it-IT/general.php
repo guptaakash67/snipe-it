@@ -607,7 +607,7 @@ return [
     'use_cloned_image' => 'Clona immagine dall\'originale',
     'use_cloned_image_help' => 'Puoi clonare l\'immagine originale o puoi caricarne una nuova usando il campo qui sotto.',
     'use_cloned_no_image_help' => 'Questo oggetto non ha un\'immagine e quindi l\'eredita dal modello o dalla categoria a cui appartiene. Se vuoi usare una immagine specifica per questo oggetto, puoi caricarne una qui sotto.',
-    'footer_credit' => '<a target="_blank" href="https://snipeitapp.com" rel="noopener">Snipe-IT</a> è un software open source, realizzato con <i class="fa fa-heart" aria-hidden="true" style="color: #a94442; font-size: 10px" /></i><span class="sr-only">amore</span> da <a href="https://bsky.app/profile/snipeitapp.com" rel="noopener">@snipeitapp.com</a>.',
+    'footer_credit' => '',
     'set_password' => 'Imposta una password',
 
 // Add form placeholders here

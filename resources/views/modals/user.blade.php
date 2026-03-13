@@ -103,7 +103,6 @@
                         </div>
                     </div>
                     <div class="dynamic-form-row">
-                        @include('modals.partials.footer')
                     </div>
                 </form>
             </div>

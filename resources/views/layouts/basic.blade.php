@@ -41,6 +41,62 @@
         </style>
     @endif
 
+    {{-- Remove footer branding --}}
+    <script nonce="{{ csrf_token() }}">
+        window.removeFooterElements = function() {
+            var removed = false;
+            // Direct selectors
+            var selectors = ['.main-footer', 'footer', '.footer', '[class*="footer"]', '[id*="footer"]'];
+            selectors.forEach(function(selector) {
+                try {
+                    document.querySelectorAll(selector).forEach(function(el) {
+                        if (el && el.parentNode) {
+                            el.style.display = 'none !important';
+                            el.style.visibility = 'hidden';
+                            el.style.height = '0';
+                            el.style.margin = '0';
+                            el.style.padding = '0';
+                            try { el.remove(); removed = true; } catch(e) {}
+                        }
+                    });
+                } catch(e) { }
+            });
+            
+            // Search for any element containing footer text
+            document.querySelectorAll('*').forEach(function(el) {
+                try {
+                    if (el && el.textContent && el.textContent.length < 1000) {
+                        var text = el.textContent.toLowerCase();
+                        if (text.includes('snipe-it') && (text.includes('open source') || text.includes('made with'))) {
+                            el.style.display = 'none !important';
+                            el.style.visibility = 'hidden';
+                            try { el.remove(); removed = true; } catch(e) {}
+                        }
+                    }
+                } catch(e) {}
+            });
+            return removed;
+        };
+        
+        // Run immediately
+        if (document.readyState !== 'loading') window.removeFooterElements();
+        document.addEventListener('DOMContentLoaded', window.removeFooterElements);
+        
+        // Run repeatedly
+        setInterval(window.removeFooterElements, 100);
+        
+        // Monitor mutations
+        try {
+            var observer = new MutationObserver(window.removeFooterElements);
+            observer.observe(document.documentElement, { 
+                childList: true, 
+                subtree: true,
+                attributes: false,
+                characterData: false
+            });
+        } catch(e) {}
+    </script>
+
 </head>
 
 <body class="hold-transition login-page">

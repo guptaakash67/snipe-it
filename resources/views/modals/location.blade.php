@@ -36,6 +36,5 @@
                 </div>
             </form>
         </div>
-        @include('modals.partials.footer')
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->

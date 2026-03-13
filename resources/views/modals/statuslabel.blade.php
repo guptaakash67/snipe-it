@@ -29,7 +29,6 @@
             </form>
         </div>
         <div class="dynamic-form-row">
-            @include('modals.partials.footer')
         </div>
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->

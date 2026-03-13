@@ -3,11 +3,11 @@
 version: '3'
 
 services:
-  snipeit:
+  fatakpay:
     build:
       context: .
       dockerfile: Dockerfile.alpine
-    container_name: snipeit
+    container_name: fatakpay
     ports:
       - "8000:80"
     depends_on:

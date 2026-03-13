@@ -223,6 +223,48 @@
                                 </div>
                             </div>
                         </fieldset>
+
+                        <!-- Footer preferences -->
+                        <fieldset name="footer-preferences" class="bottom-padded">
+                            <legend class="highlight">
+                                {{ trans('admin/settings/general.legends.footer') }}
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <strong>{{ trans('admin/settings/general.support_footer_links') }}</strong>
+                                </div>
+                                <div class="col-md-9">
+                                    <label class="form-control">
+                                        <input type="checkbox" name="support_footer" value="on" @checked(old('support_footer', $setting->support_footer) == 'on') />
+                                        {{ trans('general.yes') }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <strong>{{ trans('admin/settings/general.version_in_footer') }}</strong>
+                                </div>
+                                <div class="col-md-9">
+                                    <label class="form-control">
+                                        <input type="checkbox" name="version_footer" value="on" @checked(old('version_footer', $setting->version_footer) == 'on') />
+                                        {{ trans('general.yes') }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group {{ $errors->has('footer_text') ? 'error' : '' }}">
+                                <div class="col-md-3">
+                                    <label for="footer_text">{{ trans('admin/settings/general.additional_footer_text') }}</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" name="footer_text" id="footer_text" rows="3">{{ old('footer_text', $setting->footer_text) }}</textarea>
+                                    {!! $errors->first('footer_text', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
+                                    <p class="help-block">{!! trans('admin/settings/general.footer_text_help') !!}</p>
+                                </div>
+                            </div>
+                        </fieldset>
                         <!-- colors and skins -->
 
                         <fieldset name="color-preferences" class="bottom-padded">
@@ -299,111 +341,6 @@
 
                         </fieldset>
 
-
-                            <!-- colors and skins -->
-
-                            <fieldset name="footer-preferences" class="bottom-padded">
-                                <legend class="highlight">
-                                    {{ trans('admin/settings/general.legends.footer') }}
-                                </legend>
-
-                                <!-- Support Footer -->
-                                <div class="form-group {{ $errors->has('support_footer') ? 'error' : '' }}">
-                                    <div class="col-md-3">
-                                        <label for="support_footer">{{ trans('admin/settings/general.support_footer') }}</label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        @if (config('app.lock_passwords')===true)
-                                            <x-input.select
-                                                name="support_footer"
-                                                id="support_footer"
-                                                :options="['on' => trans('admin/settings/general.enabled'), 'off' => trans('admin/settings/general.two_factor_disabled'), 'admin' => trans('admin/settings/general.super_admin_only')]"
-                                                :selected="old('support_footer', $setting->support_footer)"
-                                                disabled
-                                                class="form-control disabled"
-                                                style="width: 150px"
-                                            />
-                                            <p class="text-warning"><i class="fas fa-lock"></i> {{ trans('general.feature_disabled') }}</p>
-                                        @else
-                                            <x-input.select
-                                                name="support_footer"
-                                                id="support_footer"
-                                                :options="['on' => trans('admin/settings/general.enabled'), 'off' => trans('admin/settings/general.two_factor_disabled'), 'admin' => trans('admin/settings/general.super_admin_only')]"
-                                                :selected="old('support_footer', $setting->support_footer)"
-                                                class="form-control"
-                                                style="width: 150px"
-                                            />
-                                        @endif
-
-
-                                        {!! $errors->first('support_footer', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
-                                    </div>
-                                </div>
-
-
-                                <!-- Version Footer -->
-                                <div class="form-group {{ $errors->has('version_footer') ? 'error' : '' }}">
-                                    <div class="col-md-3">
-                                        <label for="version_footer">{{ trans('admin/settings/general.version_footer') }}</label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        @if (config('app.lock_passwords')===true)
-                                            <x-input.select
-                                                name="version_footer"
-                                                id="version_footer"
-                                                :options="['on' => trans('admin/settings/general.enabled'), 'off' => trans('admin/settings/general.two_factor_disabled'), 'admin' => trans('admin/settings/general.super_admin_only')]"
-                                                :selected="old('version_footer', $setting->version_footer)"
-                                                disabled
-                                                class="form-control disabled"
-                                                style="width: 150px"
-                                            />
-                                            <p class="text-warning"><i class="fas fa-lock"></i> {{ trans('general.feature_disabled') }}</p>
-                                        @else
-                                            <x-input.select
-                                                name="version_footer"
-                                                id="version_footer"
-                                                :options="['on' => trans('admin/settings/general.enabled'), 'off' => trans('admin/settings/general.two_factor_disabled'), 'admin' => trans('admin/settings/general.super_admin_only')]"
-                                                :selected="old('version_footer', $setting->version_footer)"
-                                                class="form-control"
-                                                style="width: 150px"
-                                            />
-                                        @endif
-
-                                        <p class="help-block">{{ trans('admin/settings/general.version_footer_help') }}</p>
-                                        {!! $errors->first('version_footer', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
-                                    </div>
-                                </div>
-
-                                <!-- Additional footer -->
-                                <div class="form-group {{ $errors->has('footer_text') ? 'error' : '' }}">
-                                    <div class="col-md-3">
-                                        <label for="footer_text">{{ trans('admin/settings/general.footer_text') }}</label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        @if (config('app.lock_passwords')===true)
-                                            <x-input.textarea
-                                                name="footer_text"
-                                                :value="old('footer_text', $setting->footer_text)"
-                                                rows="4"
-                                                aria-labelledby="footer_text"
-                                                placeholder="{{ trans('admin/settings/general.footer_text_placeholder') }}"
-                                                disabled
-                                            />
-                                            <p class="text-warning"><i class="fas fa-lock"></i> {{ trans('general.feature_disabled') }}</p>
-                                        @else
-                                            <x-input.textarea
-                                                name="footer_text"
-                                                :value="old('footer_text', $setting->footer_text)"
-                                                rows="4"
-                                                placeholder="{{ trans('admin/settings/general.footer_text_placeholder') }}"
-                                            />
-                                        @endif
-                                        <p class="help-block">{!! trans('admin/settings/general.footer_text_help') !!}</p>
-                                        {!! $errors->first('footer_text', '<span class="alert-msg" aria-hidden="true">:message</span>') !!}
-
-                                    </div>
-                                </div>
-                            </fieldset>
 
 
 

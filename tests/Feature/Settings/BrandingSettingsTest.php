@@ -36,6 +36,26 @@ class BrandingSettingsTest extends TestCase
         $this->followRedirects($response)->assertSee('alert-success');
     }
 
+    public function testFooterPreferencesCanBeSaved()
+    {
+        $response = $this->actingAs(User::factory()->superuser()->create())
+            ->post(route('settings.branding.save', [
+                'support_footer' => 'on',
+                'version_footer' => 'on',
+                'footer_text'    => 'Custom footer content',
+            ]))
+            ->assertStatus(302)
+            ->assertRedirect(route('settings.index'))
+            ->assertSessionHasNoErrors();
+
+        $this->followRedirects($response)->assertSee('alert-success');
+
+        $setting = Setting::first();
+        $this->assertTrue((bool) $setting->support_footer);
+        $this->assertTrue((bool) $setting->version_footer);
+        $this->assertEquals('Custom footer content', $setting->footer_text);
+    }
+
 
     public function testLogoCanBeUploaded()
     {

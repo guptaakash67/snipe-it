@@ -71,9 +71,6 @@ return [
     'favicon'                   => 'Favicon',
     'favicon_format'            => 'Accepted filetypes are ico, png, and gif. Other image formats may not work in all browsers.',
     'favicon_size'          => 'Favicons should be square images, 16x16 pixels.',
-    'footer_text'               => 'Additional Footer Text ',
-    'footer_text_help'          => 'This text will appear in the right-side footer. Links are allowed using <a href="https://help.github.com/articles/github-flavored-markdown/">Github flavored markdown</a>. Line breaks, headers, images, etc may result in unpredictable results.',
-    'footer_text_placeholder'   => 'Optional footer text',
     'general_settings'			=> 'General Settings',
     'general_settings_help'     => 'Default EULA and more',
     'generate_backup'			=> 'Generate Backup',
@@ -240,10 +237,6 @@ return [
     'shortcuts_enabled'         => 'Enable Shortcuts',
     'shortcuts_help_text'       => '<strong>Windows</strong>: Alt + Access key, <strong>Mac</strong>: Control + Option + Access key',
     'snipe_version'  			=> 'Snipe-IT version',
-    'support_footer'            => 'Support Footer Links ',
-    'support_footer_help'       => 'Specify who sees the links to the Snipe-IT Support info and Users Manual',
-    'version_footer'            => 'Version in Footer ',
-    'version_footer_help'       => 'Specify who sees the Snipe-IT version and build number.',
     'system'                    => 'System Information',
     'update'                    => 'Update Settings',
     'value'                     => 'Value',
@@ -489,18 +482,8 @@ return [
         'security' => 'Security Preferences',
     ],
 
-
-    /* Keywords for settings overview help */
-    'keywords' => [
-        'brand'             => 'footer, logo, print, theme, skin, header, colors, color, css',
-        'general_settings'  => 'company support, signature, acceptance, email format, username format, images, per page, thumbnail, eula, gravatar, tos, dashboard, privacy',
-        'groups'            => 'permissions, permission groups, authorization',
-        'labels'            => 'labels, barcodes, barcode, sheets, print, upc, qr, 1d, 2d',
-        'localization'      => 'localization, currency, local, locale, time zone, timezone, international, internatinalization, language, languages, translation',
-        'php_overview'      => 'phpinfo, system, info',
-        'purge'             => 'permanently delete',
-        'security'          => 'password, passwords, requirements, two factor, two-factor, common passwords, remote login, logout, authentication',
-        'notifications'     => 'alerts, email, notifications, audit, threshold, email alerts, cc',
-    ],
-
-];
+    // footer-specific labels/help
+    'support_footer_links' => 'Support Footer Links',
+    'version_in_footer'   => 'Version in Footer',
+    'additional_footer_text' => 'Additional Footer Text',
+    'footer_text_help'    => 'This text will appear in the right-side footer. Links are allowed using Github flavored markdown. Line breaks, headers, images, etc may result in unpredictable results.',

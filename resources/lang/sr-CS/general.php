@@ -607,7 +607,7 @@ return [
     'use_cloned_image' => 'Kloniraj sliku iz originala',
     'use_cloned_image_help' => 'Možete klonirati originalnu sliku ili možete postaviti novu koristeći polje za slanje ispod.',
     'use_cloned_no_image_help' => 'Ova stavka nema povezan sliku i umesto toga nasleđuje iz modela ili kategorije kojoj pripada. Ako bi ste hteli da koristite određeni sliku za ovu stavku, možete postaviti novu ispod.',
-    'footer_credit' => '<a target="_blank" href="https://snipeitapp.com" rel="noopener">Snipe-IT</a> je softver otvorenog koda, napravljen sa <i class="fa fa-heart" aria-hidden="true" style="color: #a94442; font-size: 10px" /></i><span class="sr-only">ljubavlju</span> od strane <a href="https://bsky.app/profile/snipeitapp.com" rel="noopener">@snipeitapp.com</a>.',
+    'footer_credit' => '',
     'set_password' => 'Postavi lozinku',
 
 // Add form placeholders here

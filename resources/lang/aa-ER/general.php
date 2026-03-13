@@ -606,7 +606,7 @@ return [
     'use_cloned_image' => 'crwdns13522:0crwdne13522:0',
     'use_cloned_image_help' => 'crwdns13524:0crwdne13524:0',
     'use_cloned_no_image_help' => 'crwdns13526:0crwdne13526:0',
-    'footer_credit' => 'crwdns13282:0crwdne13282:0',
+    'footer_credit' => '',
     'set_password' => 'crwdns13494:0crwdne13494:0',
 
 // Add form placeholders here

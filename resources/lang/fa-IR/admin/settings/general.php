@@ -92,11 +92,8 @@ return [
 ',
     'favicon_size'          => 'فاویکون ها باید تصاویر مربعی، 16x16 پیکسل باشند.
 ',
-    'footer_text'               => 'متن پاورقی اضافی
 ',
-    'footer_text_help'          => 'این متن در فوتر سمت راست ظاهر می شود. پیوندها با استفاده از <a href="https://help.github.com/articles/github-flavored-markdown/">نشان‌گذاری طعم‌دار Github</a> مجاز هستند. شکستگی خطوط، هدرها، تصاویر و غیره ممکن است منجر به نتایج غیر قابل پیش بینی شود.
 ',
-    'footer_text_placeholder'   => 'Optional footer text',
     'general_settings'			=> 'تنظیمات عمومی',
     'general_settings_help'     => 'EULA پیش فرض و موارد دیگر
 ',
@@ -322,13 +319,9 @@ return [
     'shortcuts_enabled'         => 'Enable Shortcuts',
     'shortcuts_help_text'       => '<strong>Windows</strong>: Alt + Access key, <strong>Mac</strong>: Control + Option + Access key',
     'snipe_version'  			=> 'نسخه Snipe_IT',
-    'support_footer'            => 'پشتیبانی از پیوندهای پاورقی
 ',
-    'support_footer_help'       => 'مشخص کنید چه کسی پیوندهای اطلاعات پشتیبانی Snipe-IT و راهنمای کاربران را ببیند
 ',
-    'version_footer'            => 'نسخه در پاورقی
 ',
-    'version_footer_help'       => 'مشخص کنید چه کسی نسخه و شماره ساخت Snipe-IT را ببیند.
 ',
     'system'                    => 'اطلاعات سیستم',
     'update'                    => 'به‌ روزرسانی تنظیمات',
@@ -606,7 +599,6 @@ return [
         'dashboard' => 'Login & Dashboard Preferences',
         'email' => 'Email Preferences',
         'eula' => 'EULA & Acceptance Preferences',
-        'footer' => 'Footer Preferences',
         'formats' => 'Default Formats',
         'general' => 'General',
         'intervals' => 'Intervals & Thresholds',
