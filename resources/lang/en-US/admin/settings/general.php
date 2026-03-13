@@ -239,7 +239,7 @@ return [
     'webhook_test_help'           => 'Test whether your :app integration is configured correctly. YOU MUST SAVE YOUR UPDATED :app SETTINGS FIRST.',
     'shortcuts_enabled'         => 'Enable Shortcuts',
     'shortcuts_help_text'       => '<strong>Windows</strong>: Alt + Access key, <strong>Mac</strong>: Control + Option + Access key',
-    'snipe_version'  			=> 'Snipe-IT version',
+    'snipe_version'  			=> 'Fatakpay version',
     'support_footer'            => 'Support Footer Links ',
     'support_footer_help'       => 'Specify who sees the links to the Snipe-IT Support info and Users Manual',
     'version_footer'            => 'Version in Footer ',
